@@ -1,6 +1,9 @@
 ---
 layout: default
 title: First Post
+categories:
+  - blog
+
 ---
 
 This will be the best blog ever.
