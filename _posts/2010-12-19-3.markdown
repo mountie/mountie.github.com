@@ -1,0 +1,8 @@
+---
+layout: default
+title: More Apologies
+categories:
+   - apologies
+---
+
+This time, spelt correctly.
