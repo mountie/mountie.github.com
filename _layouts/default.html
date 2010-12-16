@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
 <title>{{ page.title }} </title>
-	<link rel="STYLESHEET" type="text/css" href="http://www.highrise.ca//highrise.css">
-	<link REL="Shortcut Icon" HREF="http://www.highrise.ca/highrise.ico" TYPE="image/x-icon">
+	<link rel="STYLESHEET" type="text/css" href="/highrise.css">
+	<link REL="Shortcut Icon" HREF="/highrise.ico" TYPE="image/x-icon">
 </head>
 <body bgcolor="#ffffff" text="#000000" vlink="#0033cc" alink="#0033cc" link="#0033cc" marginheight="0" marginwidth="0" leftmargin="0" topmargin="0">
 
@@ -106,7 +106,32 @@
 
 
 
-{{ content }}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody><tr>
+                <td width="1%" valign="top">
+<!--#INCLUDE VIRTUAL="/services/menu" -->
+
+                </td>
+                <td bgcolor="#000000">
+                        <img src="/images/space.gif" width="1" height="17" border="0">
+                </td>
+                <td width="15">
+                        &nbsp;
+                </td>
+                <td width="464" valign="top" align="left">
+                        <img src="/images/space.gif" border="0" width="464" height="7" alt="">
+                        <br clear="all">
+
+			{{ content }}
+                        <img src="/images/space.gif" border="0" width="464" height="12" alt="">
+                </td>
+                <td width="100%">
+                </td>
+        </tr>
+</tbody></table>
+
+
+
 
 
 
