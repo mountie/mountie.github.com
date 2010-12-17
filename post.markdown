@@ -7,6 +7,10 @@ categories:
   - mdadm
 ---
 
+
+Extending linear raid arrays
+============================
+
 So everybody pretty much know my hate for LVM.  It nukes performance, and nukes reliability guarentees (barriers).
 
 Since 2.6.22, linux md raid system has supported "growing" linear arrays.  Adding another disk.
