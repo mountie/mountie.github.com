@@ -2,9 +2,9 @@
 layout: default
 title: Extending linear arrays
 categories:
-	- linux
-	- raid
-	- mdadm
+  - linux
+  - raid
+  - mdadm
 ---
 
 So everybody pretty much know my hate for LVM.  It nukes performance, and nukes reliability guarentees (barriers).
