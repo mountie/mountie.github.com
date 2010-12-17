@@ -60,3 +60,13 @@ info
 {	font-size: 10px;
 	font-family: Verdana, Arial, Helvetica;
 }
+
+code
+{
+	font-family: fixed;
+	padding: 10px;
+	margin: 10px;
+	bgcolor: #cfcfcf;
+	border: 1px solid red;
+       
+}
