@@ -16,6 +16,7 @@ Since I know do all my disk based stuff as raid1 pairs using disks from differen
 But since I hate LVM, that's always meant a new FS.   No longer.
 
 I start with 2 devices (sdb1, sdb2) for my initial array:
+
 	root@spud:/home/mountie# mdadm --create /dev/md0 --force --level=linear -n 2 /dev/sdb1 /dev/sdb2
 	mdadm: Defaulting to version 1.2 metadata
 	mdadm: array /dev/md0 started.
@@ -44,6 +45,7 @@ I start with 2 devices (sdb1, sdb2) for my initial array:
 So we have our default file system, spaning 2 devices, and w/ 30GB.  Yes, my devices are small.
 
 But time passes, and I now need more space.  Buy more disks, and add another device:
+
 	root@spud:/home/mountie# mdadm /dev/md0 --grow --add /dev/sdb3
 	root@spud:/home/mountie# cat /proc/mdstat 
 	Personalities : [linear] 
@@ -99,5 +101,7 @@ Btu more time passes, and I need more space again.  Buy yet another round of dis
 And this time, I splurged, and my device was 22GB.  But still, all online!
 
 To apply this to real life:
+
 	   s/sdb/md/
+
 and then my "15GB" devices all become 1-2 TB raid pairs.
