@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Extending linear arrays
 categories:
   - linux
