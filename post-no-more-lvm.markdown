@@ -59,6 +59,7 @@ to my new linear partition.
 
 
 A couple hours of rsync running on top of the rebuild, and we're up:
+
 	root@central:/# df -h
 	Filesystem            Size  Used Avail Use% Mounted on
 
@@ -72,6 +73,7 @@ Step 2:  Remove LVM
 ======================================================
 I've been waiting for this step for a few years know.  Since my data is now on my my new XFS filesystem, 
 all I need to do is switch to the new one, and remove LVM:
+
 	root@central:/# mkdir /data.old
 	root@central:/# mount --move /data /data.old
 	root@central:/# mount --move /mnt /data
@@ -89,6 +91,7 @@ all I need to do is switch to the new one, and remove LVM:
 	root@central:/# 
 
 And just to make sure:
+
 	root@central:/# dd if=/dev/zero of=/dev/md0
 	^C
 	190513+0 records in
@@ -103,11 +106,13 @@ And just to make sure:
 
 	root@central:/#
 
+Yes, I really don't like LVM.
 
 Step 3: Clean up old mirrors
 ===========================================
 
 MD set md1 is my pair of small 160GB disks.  I'm going to break thtt up, and use those 2 disks for "expermients".
+
 	root@central:/# mdadm --stop /dev/md0
 	mdadm: stopped /dev/md0
 	root@central:/# cat /proc/mdstat 
@@ -126,6 +131,7 @@ MD set md1 is my pair of small 160GB disks.  I'm going to break thtt up, and use
 
 
 Now md1 is my pair of 1TB disks, but that was made old old mdadm, and has old superblock version.  Supposedly superblock version 1.2 is better for filesystems aligning to sectors underneath.  So let's change it, then add it to our linear array:
+
 	root@central:/# mdadm --stop /dev/md1
 	mdadm: stopped /dev/md1
 	root@central:/# mdadm --zero-superblock /dev/sdb /dev/sde
@@ -143,6 +149,7 @@ Now md1 is my pair of 1TB disks, but that was made old old mdadm, and has old su
 Step 4: Extend our linear set
 ===========================================================
 Because this was the whole point (well, besides getting rid of LVM):
+
 	root@central:/# mdadm /dev/md100  --grow --add /dev/md0
 	root@central:/# cat /proc/mdstat 
 	Personalities : [raid1] [linear] 
@@ -161,6 +168,7 @@ Because this was the whole point (well, besides getting rid of LVM):
 
 
 And now, of course, we need to extend XFS:
+
 	root@central:/# xfs_growfs /data
 	meta-data=/dev/md100             isize=256    agcount=4, agsize=91571025 blks
 		 =                       sectsz=512   attr=2
@@ -180,10 +188,12 @@ And now, of course, we need to extend XFS:
 Step 5: Final configuration
 =============================================
 And, before you quit, make sure to touchup /etc/mdadm/mdadm.conf:
+
 	mdadm -Es >> /etc/mdadm/mdadm.conf
 	vi /etc/mdadm/mdadm.conf
 
 And since I've got a new FS for my /data, I need to remember to update fstab:
+
 	dev/disk/by-id/md-uuid-0bdd41ba:e402e25a:dc8404a6:5f7db4d5     /data   xfs     defsults        0       0
 	#/dev/disk/by-id/dm-uuid-LVM-VpTEcinocVfc8O331JeX2iU9G6LnLlxZtYYyzw2eunI6tqg2ISNmbcrmQsYIECyJ           /data.old       xfs     defaults        0       0
 
