@@ -1,0 +1,14 @@
+---
+layout: nil
+---
+ 
+{% for post in site.posts limit:100}
+Entry:
+  Id: {{ post.id }}
+  Title: {{ post.title }}
+  Categories: {% for category in post.categories %}
+    - {{category}}{% endfor %}
+  Url: {{ post.url }}
+  Updated: {{ post.date }}
+  Content: {{ post.content | truncatewords: 500
+{% endfor %}
