@@ -194,8 +194,7 @@ And, before you quit, make sure to touchup /etc/mdadm/mdadm.conf:
 
 And since I've got a new FS for my /data, I need to remember to update fstab:
 
-	dev/disk/by-id/md-uuid-0bdd41ba:e402e25a:dc8404a6:5f7db4d5     /data   xfs     defsults        0       0
-	#/dev/disk/by-id/dm-uuid-LVM-VpTEcinocVfc8O331JeX2iU9G6LnLlxZtYYyzw2eunI6tqg2ISNmbcrmQsYIECyJ           /data.old       xfs     defaults        0       0
+	/dev/disk/by-id/md-uuid-0bdd41ba:e402e25a:dc8404a6:5f7db4d5     /data   xfs     defaults        0       0
 
 
 
