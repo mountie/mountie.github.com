@@ -10,5 +10,5 @@ Entry:
     - {{category}}{% endfor %}
   Url: {{ post.url }}
   Updated: {{ post.date }}
-  Content: {{ post.content | truncatewords: 500 }}
+  Content: {{ post.content | truncate: 1000 }}
 {% endfor %}
