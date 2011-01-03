@@ -9,6 +9,8 @@ categories:
 
 __Removing LVM__
 ========================================
+- - -
+
 So, since I'm sick of LVM, and I have another couple TB of disks to add to my file server, I thought now would be a good
 time as ever to remove LVM, and go to straight linear raid over mirrors.
 
