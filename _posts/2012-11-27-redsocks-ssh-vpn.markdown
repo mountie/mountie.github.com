@@ -10,14 +10,19 @@ categories:
 
 I'm at a company now where I work from work, and from home.  And much of the work involves
 access to work servers in the lab.   We have access through a single SSH server, running
-on a "bastion host" on a non-standard port...
+on a "bastion host" on a non-standard port.  No real VPN.
 
 So, when I'm at home, I want quick access to everything on the work lan.  HTTP servers
 (running gitlab, jenkins, bugzilla, wiki, etc), GIT servers (over ssh and git), VMWare
-servers, RDP servers, etc...
+servers, RDP servers, etc...  I quickly got tired of the man port-forwards, and trying
+to remember what local port was pointing at which "remote" service.
 
-My solution to this involves the SSH server we have access to, SSH's built-in SOCKS5 proxy,
-and redsocks, a proxy server that makes use of "REDIRECT" firewall rules.
+My solution to this involved the SSH server we have access to, SSH's built-in SOCKS5 proxy,
+and redsocks, a proxy server that makes use of "REDIRECT" firewall rules.  I had discovered
+redsocks previously when I used to have a device that wanted network access (Nexus 7 Tablet)
+in an environment where I had no wifi (and wasn't allowed to run a wifi) and everything needed
+to go through a corporate HTTP proxy.  Bluetooth PAN + redsocks gave my tablet network access
+then, and now gives me transparent access to my work LAN wherever I am.
 
 One potential problem is if both the "work lan" and my "home lan" are using the same address
 range.  That would cause IP address conflicts between home devices, and work devices.  But
