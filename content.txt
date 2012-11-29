@@ -6,6 +6,7 @@ layout: nil
 Entry:
   Id: {{ post.id }}
   Title: {{ post.title }}
+  Suppress: {{ post.suppress }}
   Categories: {% for category in post.categories %}
     - {{category}}{% endfor %}
   Url: {{ post.url }}
